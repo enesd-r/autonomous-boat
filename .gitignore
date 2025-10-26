@@ -1,0 +1,19 @@
+# Python cache dosyaları
+__pycache__/
+*.pyc
+
+# Log dosyaları
+*.log
+
+# Sanal ortamlar
+venv/
+env/
+
+# Sistem dosyaları
+.DS_Store
+
+# Hassas bilgiler
+*.txt
+credentials/
+secrets/
+
