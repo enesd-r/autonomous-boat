@@ -1,0 +1,12 @@
+[Unit]
+Description=Autonomous Boat - Parkur1 Baslatma Servisi
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/autonomous-boat/src/main.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
