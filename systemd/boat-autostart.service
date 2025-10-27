@@ -1,16 +1,20 @@
 [Unit]
 Description=Autonomous Boat Auto Start Service
-After=network.target
+After=local-fs.target
+Wants=local-fs.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /home/pi/autonomous-boat/src/main.py
-WorkingDirectory=/home/pi/autonomous-boat
-StandardOutput=append:/home/pi/logs/boat.log
-StandardError=append:/home/pi/logs/boat-error.log
-Restart=always
 User=pi
+WorkingDirectory=/home/pi/autonomous-boat
+# Use venv python to ensure dependencies are isolated:
+ExecStart=/home/pi/venv_ida/bin/python /home/pi/autonomous-boat/src/main.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/home/pi/autonomous-boat/logs/boat-service.log
+StandardError=append:/home/pi/autonomous-boat/logs/boat-service-error.log
 
 [Install]
 WantedBy=multi-user.target
+
 
